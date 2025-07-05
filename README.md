@@ -27,25 +27,26 @@ This is a full-stack Kanban-style task management system that enables team membe
 ### 🔧 Backend Setup (in `/backend` directory)
 1. Navigate to the backend directory:
 ```
-
+```
 cd backend
-
 ```
+
+
 2. Install dependencies:
-```
 
+```
 npm install
 
 ```
 3. Create a `.env` file with your configuration:
-```
 
+```
 MONGO\_URI=your-mongodb-uri
 JWT\_SECRET=your-jwt-secret
 
 ```
 4. Start the backend server:
-```
+
 
 npm start
 
