@@ -47,7 +47,7 @@ JWT\_SECRET=your-jwt-secret
 ```
 4. Start the backend server:
 
-
+```
 npm start
 
 ```
