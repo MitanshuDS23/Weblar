@@ -116,5 +116,5 @@ Each task has a `version` field. The frontend includes the current version when 
 
 ## 🌐 Live App and Demo
 
-🔗 **Live App:** [https://your-task-manager.netlify.app/](https://your-task-manager.netlify.app/)  
+🔗 **Live App:** [https://neon-peony-8e1b29.netlify.app/)  
 🎥 **Demo Video:** [Watch on YouTube](https://youtu.be/your-demo-video-id)
