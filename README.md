@@ -1,18 +1,17 @@
-```
 # 📝 Task Manager App
 
 ---
 
 ## 📌 Project Overview
-This is a full-stack Kanban-style task management system that enables team members to create tasks, assign them to users, move tasks through stages (To Do → In Progress → Done), and view a live activity log of all changes. The system supports drag-and-drop functionality, real-time updates with Socket.IO, and secure authentication, ensuring that only assigned users can interact with their tasks.
+A full-stack Kanban-style task management system enabling team members to create tasks, assign them to users, move tasks through stages (To Do → In Progress → Done), and view a real-time activity log. The system supports drag-and-drop, live updates via Socket.IO, and secure authentication to ensure only assigned users can interact with their tasks.
 
 ---
 
 ## 🛠 Tech Stack Used
-- **Frontend (in `/frontend` directory):** React, react-beautiful-dnd, axios, socket.io-client, React Router
-- **Backend (in `/backend` directory):** Node.js, Express, MongoDB (Mongoose), Socket.IO
+- **Frontend (`/frontend`):** React, react-beautiful-dnd, axios, socket.io-client, React Router
+- **Backend (`/backend`):** Node.js, Express, MongoDB (Mongoose), Socket.IO
 - **Authentication:** JWT-based authentication with protected routes
-- **Styling:** CSS modules
+- **Styling:** CSS Modules
 - **Deployment:** Netlify (frontend), Render/AWS/Heroku (backend)
 
 ---
@@ -22,105 +21,100 @@ This is a full-stack Kanban-style task management system that enables team membe
 ### 📦 Prerequisites
 - Node.js (v16+ recommended)
 - npm
-- MongoDB (local or cloud URI)
+- MongoDB (local or a cloud URI)
 
-### 🔧 Backend Setup (in `/backend` directory)
+---
+
+### 🔧 Backend Setup (`/backend`)
 1. Navigate to the backend directory:
-```
-```
-cd backend
-```
-
+    ```bash
+    cd backend
+    ```
 
 2. Install dependencies:
+    ```bash
+    npm install
+    ```
 
-```
-npm install
-
-```
 3. Create a `.env` file with your configuration:
+    ```env
+    MONGO_URI=your-mongodb-uri
+    JWT_SECRET=your-jwt-secret
+    ```
 
-```
-MONGO\_URI=your-mongodb-uri
-JWT\_SECRET=your-jwt-secret
-
-```
 4. Start the backend server:
+    ```bash
+    npm start
+    ```
 
-```
-npm start
+5. The backend will run at [http://localhost:5000](http://localhost:5000).
 
-```
-5. The backend should now run on [http://localhost:5000](http://localhost:5000).
+---
 
-### 💻 Frontend Setup (in `/frontend` directory)
+### 💻 Frontend Setup (`/frontend`)
 1. Open a new terminal and navigate to the frontend directory:
-```
+    ```bash
+    cd frontend
+    ```
 
-cd frontend
-
-```
 2. Install dependencies:
-```
+    ```bash
+    npm install
+    ```
 
-npm install
-
-```
 3. Start the React development server:
-```
+    ```bash
+    npm start
+    ```
 
-npm start
-
-```
-4. The frontend should now run on [http://localhost:3000](http://localhost:3000).
+4. The frontend will run at [http://localhost:3000](http://localhost:3000).
 
 ---
 
 ## 🚀 Features List and Usage Guide
 
 ✅ **User Registration & Login**  
-Secure JWT-based registration and login allow authenticated access to the board and API.
+Secure JWT-based registration and login provide authenticated access to the board and API.
 
 ✅ **Task Creation**  
-Users can create tasks with a title, description, and priority.
+Create tasks with a title, description, priority, and optional assignee.
 
 ✅ **Manual & Smart Assignment**  
-Tasks can be manually assigned to specific users or automatically assigned to the team member with the fewest active tasks using Smart Assign.
+Assign tasks manually or use Smart Assign to automatically assign tasks to the user with the fewest active tasks.
 
 ✅ **Kanban Board View**  
-Tasks are organized in three columns: To Do, In Progress, and Done. Users can collapse or expand columns as needed.
+Tasks are organized in three columns: To Do, In Progress, and Done. Columns can be expanded or collapsed.
 
 ✅ **Drag and Drop**  
-Tasks can be moved between columns via drag-and-drop. Only the assigned user can move their tasks.
+Assigned users can move their tasks across stages via drag-and-drop.
 
 ✅ **Update Button**  
-Assigned users see an “Update” button on their tasks when they are in To Do or In Progress stages, allowing them to advance the task to the next stage without dragging.
+Assigned users see an “Update” button on tasks in To Do or In Progress, allowing them to advance tasks without dragging.
 
 ✅ **Activity Log**  
-All actions (task creation, assignment, updates, deletions) are logged and displayed in a real-time activity log.
+A real-time activity log displays task creation, updates, deletions, and assignments.
 
 ✅ **Real-Time Collaboration**  
-All changes are broadcast live to all users through Socket.IO, ensuring everyone sees updates immediately.
+All updates broadcast instantly to all connected users via Socket.IO.
 
 ✅ **Conflict Handling**  
-Each task uses a version field for optimistic locking. When a user updates a task, the backend checks if the version matches; if not, it rejects the update to prevent overwriting concurrent changes.
+Optimistic locking ensures consistent updates: the backend checks the task version during updates, preventing overwriting concurrent changes.
 
 ---
 
 ## ⚡ Explanations for Smart Assign and Conflict Handling Logic
 
 ### 🔹 Smart Assign
-When a user clicks the **Smart Assign** button on a task, the backend queries all users and counts their active tasks (tasks not in Done). It assigns the task to the user with the fewest active tasks, balancing the workload automatically.
+When **Smart Assign** is triggered, the backend queries all users and counts their active tasks (tasks not marked Done). The user with the fewest active tasks is selected and assigned the new task, distributing workload evenly.
 
 ### 🔹 Conflict Handling
-To avoid concurrent update issues, each task carries a `version` field. The frontend sends the task’s current version during updates. The backend compares it with the version in the database:  
-- If they match, the update is allowed and the version is incremented.  
-- If they don’t match, it means another user updated the task first, and the backend rejects the request, prompting the client to refresh task data.
+Each task has a `version` field. The frontend includes the current version when updating a task. The backend compares it to the latest version in the database:
+- If versions match, the update succeeds and the task’s version increments.
+- If versions differ, it indicates another user updated the task first, so the backend rejects the request, avoiding conflicts.
 
 ---
 
-## 🌐 Link to Deployed Live App and Demo Video
+## 🌐 Live App and Demo
 
 🔗 **Live App:** [https://your-task-manager.netlify.app/](https://your-task-manager.netlify.app/)  
 🎥 **Demo Video:** [Watch on YouTube](https://youtu.be/your-demo-video-id)
-```
