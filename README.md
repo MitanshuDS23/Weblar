@@ -12,7 +12,7 @@ A full-stack Kanban-style task management system enabling team members to create
 - **Backend (`/backend`):** Node.js, Express, MongoDB (Mongoose), Socket.IO
 - **Authentication:** JWT-based authentication with protected routes
 - **Styling:** CSS Modules
-- **Deployment:** Netlify (frontend), Render/AWS/Heroku (backend)
+- **Deployment:Netlify (frontend), Render(backend)
 
 ---
 
